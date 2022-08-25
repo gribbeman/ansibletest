@@ -1,4 +1,5 @@
-- name: Snacka med alla, kolla dist osv.
+---
+  - name: Snacka med alla, kolla dist osv.
     hosts: all
     tasks:
       - name: Gruppera efter dist.
