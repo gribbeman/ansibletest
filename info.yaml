@@ -1,0 +1,23 @@
+- name: Snacka med alla, kolla dist osv.
+    hosts: all
+    tasks:
+      - name: Gruppera efter dist.
+        group_by:
+          key: os_{{ ansible_facts['distribution'] }}
+
+  - name: Do something on CentOS hosts
+    hosts: os_CentOS
+    gather_facts: False
+    tasks:
+      - # only centos.
+
+  - name: Do something on ubuntu hosts
+    hosts: os_Ubuntu
+    gather_facts: False
+    tasks:
+      - name: uname
+        register: unameout
+        command: "uname -a"
+
+      - debug:
+          var: unameout.stdout_lines
